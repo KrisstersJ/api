@@ -38,6 +38,24 @@ class DbConnect
 			echo "Table Creation Error: " . $e->getMessage();
 		}
 	}
+	public function createProduct1($conn)
+	{
+		$sql = "INSERT INTO products(id, sku, name, price, attribute, attribute_value, created_at) VALUES(null, :sku, :name, :price, :attribute, :attribute_value, :created_at)";
+		$stmt = $conn->prepare($sql);
+		$created_at = date('Y-m-d');
+		$sku = "HelloNigga";
+		$name = "Book";
+		$price = "40";
+		$attribute = "Weight";
+		$weight = "12";
 
+		$stmt->bindParam(':sku', $sku);
+		$stmt->bindParam(':name', $name);
+		$stmt->bindParam(':price', $price);
+		$stmt->bindParam(':attribute', $attribute);
+		$stmt->bindParam(':attribute_value', $weight);
+		$stmt->bindParam(':created_at', $created_at);
+
+	}
 }
 ?>
