@@ -1,17 +1,18 @@
 {
-  "name": "krisstersj/api",
+  "name": "jurcs/api",
+  "description": "Scandiweb assignment api",
   "autoload": {
     "psr-4": {
-      "app\\": "./"
+      "Jurcs\\Api\\": "src/"
     }
   },
   "authors": [
     {
-      "name": "Kristers Jurčs",
+      "name": "Kristers Jurcs",
       "email": "jurcskristers6@gmail.com"
     }
   ],
   "require": {
-    "php" : "7.2.34"
+    "php": "7.2.34"
   }
 }
