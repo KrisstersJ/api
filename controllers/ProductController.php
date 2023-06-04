@@ -63,6 +63,3 @@ class ProductController
 
 }
 
-$dbConnect = new DbConnect();
-$conn = $dbConnect->connect();
-$dbConnect->createTable();
