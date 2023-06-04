@@ -24,36 +24,33 @@ switch ($method) {
             $stmt->execute();
             $products = $stmt->fetch(PDO::FETCH_ASSOC);
         } else {
-            $stmt = $conn->prepare($sql);
-            $stmt->execute();
-            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $products = $productController->getAllProducts($conn);
         }
 
         echo json_encode($products);
         break;
     case "POST":
-            $productData = json_decode(file_get_contents('php://input'));
-    
-            $product = $productController->createProduct($productData, $conn);
-            if ($product) {
-                $response = ['status' => 1, 'message' => 'Record created successfully'];
-            } else {
-                $response = ['status' => 0, 'message' => 'Failed to create record'];
-            }
-    
-            echo json_encode($response);
-            break;
+        $productData = json_decode(file_get_contents('php://input'));
+
+        $product = $productController->createProduct($productData, $conn);
+        if ($product) {
+            $response = ['status' => 1, 'message' => 'Record created successfully'];
+        } else {
+            $response = ['status' => 0, 'message' => 'Failed to create record'];
+        }
+
+        echo json_encode($response);
+        break;
     case "DELETE":
-                $productIds = json_decode(file_get_contents('php://input'));
-                $result = $productController->deleteProduct($productIds, $conn);
-                if ($result) {
-                    $response = ['status' => 1, 'message' => 'Products deleted successfully'];
-                } else {
-                    $response = ['status' => 0, 'message' => 'Failed to delete products'];
-                }
-            
-                echo json_encode($response);
-                break;
+        $productIds = json_decode(file_get_contents('php://input'));
+        $result = $productController->deleteProduct($productIds, $conn);
+        if ($result) {
+            $response = ['status' => 1, 'message' => 'Products deleted successfully'];
+        } else {
+            $response = ['status' => 0, 'message' => 'Failed to delete products'];
+        }
+
+        echo json_encode($response);
+        break;
 
 }
-

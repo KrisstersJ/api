@@ -1,10 +1,12 @@
 <?php
 
 
-class DVDProduct extends AbstractProduct {
+class DVDProduct extends AbstractProduct
+{
     private $size;
 
-    public function __construct($sku, $name, $price, $size) {
+    public function __construct($sku, $name, $price, $size)
+    {
         parent::__construct($sku, $name, $price);
         $this->size = $size;
     }
@@ -19,17 +21,14 @@ class DVDProduct extends AbstractProduct {
         $price = $this->getPrice();
         $attribute = "Size";
         $attributeValue = $this->size;
-    
+
         $stmt->bindParam(':sku', $sku);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':price', $price);
-        $stmt->bindParam(':attribute', $attribute); 
-        $stmt->bindParam(':attribute_value', $attributeValue); 
+        $stmt->bindParam(':attribute', $attribute);
+        $stmt->bindParam(':attribute_value', $attributeValue);
         $stmt->bindParam(':created_at', $created_at);
-    
+
         return $stmt->execute();
     }
 }
-
-
-

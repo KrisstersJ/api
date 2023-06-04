@@ -4,6 +4,7 @@ include '../models/DVDProduct.php';
 include '../models/BookProduct.php';
 include '../models/FurnitureProduct.php';
 include '../models/ProductFactory.php';
+include '../database/Dbconnect.php';
 
 class ProductController
 {
@@ -19,7 +20,7 @@ class ProductController
             if ($existingProduct) {
                 return ['status' => 0, 'message' => 'SKU already exists', 'product' => $existingProduct];
             }
-            
+
             $result = $product->save($conn);
             if ($result) {
                 return ['status' => 1, 'message' => 'Record created successfully'];
@@ -41,17 +42,27 @@ class ProductController
         return $product;
     }
 
-    public function deleteProduct($productIds, $conn) {
-        $sql = "DELETE FROM products WHERE id IN (".implode(",", $productIds).")";
+    public function getAllProducts($conn)
+    {
+        $sql = "SELECT * FROM products";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $products;
+    }
+
+    public function deleteProduct($productIds, $conn)
+    {
+        $sql = "DELETE FROM products WHERE id IN (" . implode(",", $productIds) . ")";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         return $stmt->rowCount() > 0;
     }
-    
+
+
+
 }
 
-
-
-
-
-
+$dbConnect = new DbConnect();
+$conn = $dbConnect->connect();
+$dbConnect->createTable();
