@@ -11,5 +11,7 @@
       "email": "jurcskristers6@gmail.com"
     }
   ],
-  "require": {}
+  "require": {
+    "php" : "7.2.34"
+  }
 }
