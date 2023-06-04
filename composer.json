@@ -1,0 +1,15 @@
+{
+    "name": "krisstersj/api",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kristers Jurčs",
+            "email": "jurcskristers6@gmail.com"
+        }
+    ],
+    "require": {}
+}

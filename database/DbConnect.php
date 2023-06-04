@@ -1,9 +1,9 @@
 <?php
 	class DbConnect {
-		private $server = 'localhost';
-		private $dbname = 'product_catalog_db';
-		private $user = 'root';
-		private $pass = '';
+		private $server = 'eu-cdbr-west-03.cleardb.net';
+		private $dbname = 'heroku_de2ad61d358789e';
+		private $user = 'bfed4e75249dde';
+		private $pass = '9b43b917';
 
 		public function connect() {
 			try {
