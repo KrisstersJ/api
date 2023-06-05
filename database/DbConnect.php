@@ -16,27 +16,5 @@ class DbConnect
 			echo "Database Error: " . $e->getMessage();
 		}
 	}
-	public function createTable()
-	{
-		try {
-			$conn = $this->connect();
-			$sql = "
-                CREATE TABLE IF NOT EXISTS `products` (
-                    `id` int(11) NOT NULL,
-                    `sku` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-                    `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-                    `price` decimal(10,2) NOT NULL,
-                    `attribute` enum('Weight','Dimensions','Size') COLLATE utf8mb4_unicode_ci NOT NULL,
-                    `attribute_value` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-                    `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                    PRIMARY KEY (`id`),
-                    UNIQUE KEY `sku` (`sku`)
-                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-            ";
-			$conn->exec($sql);
-		} catch (\Exception $e) {
-			echo "Table Creation Error: " . $e->getMessage();
-		}
-	}
 }
 ?>

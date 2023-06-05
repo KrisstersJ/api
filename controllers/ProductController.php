@@ -58,8 +58,4 @@ class ProductController
         $stmt->execute();
         return $stmt->rowCount() > 0;
     }
-
-
-
 }
-

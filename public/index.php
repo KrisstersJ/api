@@ -13,8 +13,6 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 $productController = new ProductController();
 
-$objDb->createTable();
-
 switch ($method) {
     case "GET":
         $sql = "SELECT * FROM products ORDER BY id ASC";
