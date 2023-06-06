@@ -13,7 +13,7 @@ class DVDProduct extends AbstractProduct
 
     public function save($conn)
     {
-        $sql = "INSERT INTO products(id, sku, name, price, attribute, attribute_value, created_at) VALUES(null, :sku, :name, :price, :attribute, :attribute_value, :created_at)";
+        $sql = "INSERT INTO products(sku, name, price, attribute, attribute_value, created_at) VALUES(:sku, :name, :price, :attribute, :attribute_value, :created_at)";
         $stmt = $conn->prepare($sql);
         $created_at = date('Y-m-d');
         $sku = $this->getSku();
