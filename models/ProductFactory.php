@@ -3,9 +3,9 @@
 class ProductFactory
 {
     private $productClassMapping = [
-        'book' => 'BookProduct',
-        'dvd' => 'DVDProduct',
-        'furniture' => 'FurnitureProduct',
+        'Book' => 'BookProduct',
+        'DVD' => 'DVDProduct',
+        'Furniture' => 'FurnitureProduct',
     ];
 
     public function createProduct($productType, $productData)
